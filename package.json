@@ -99,5 +99,9 @@
   },
   "volta": {
     "node": "19.0.0"
+  },
+  "publishConfig": {
+    "@aksilia:registry": "https://npm.pkg.github.com"
   }
 }
+

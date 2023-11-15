@@ -1,5 +1,5 @@
 {
-  "name": "@2bad/bitrix",
+  "name": "@aksilia/bitrix",
   "version": "2.5.1",
   "description": "Bitrix24 REST API client that doesn't suck",
   "keywords": [
@@ -13,13 +13,13 @@
     "bitrix24",
     "typescript"
   ],
-  "homepage": "https://github.com/2BAD/bitrix#readme",
+  "homepage": "https://github.com/aksilia/bitrix#readme",
   "bugs": {
-    "url": "https://github.com/2BAD/bitrix/issues"
+    "url": "https://github.com/aksilia/bitrix/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/2BAD/bitrix.git"
+    "url": "https://github.com/aksilia/bitrix.git"
   },
   "license": "MIT",
   "author": "2BAD (https://github.com/2BAD)",

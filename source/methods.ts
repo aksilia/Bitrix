@@ -71,6 +71,7 @@ export type ListParams = {
   readonly order?: { readonly [key: string]: string } // 'ASC' | 'DESC'
   readonly filter?: { readonly [key: string]: string | number }
   readonly select?: readonly string[]
+  readonly admin_mode?: 'Y' | 'N';
 }
 
 /**

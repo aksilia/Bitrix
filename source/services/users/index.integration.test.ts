@@ -22,11 +22,15 @@ describe('Users', () => {
       expect(result).toMatchSnapshot()
     })
     it('should get entry with ID = 1', async () => {
-      const { result } = await users.get('1')
+      const { result } = await users.get({
+        filter: { id: '1' },
+      })
       expect(result).toMatchSnapshot()
     })
     it('should return an error in case non existent ID is requested', async () => {
-      const { result } = await users.get('1001')
+      const { result } = await users.get({
+        filter: { id: '19834753' },
+      })
       expect(result).toEqual([])
     })
   })

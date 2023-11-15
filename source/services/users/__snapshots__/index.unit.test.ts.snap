@@ -5,7 +5,9 @@ Array [
   Array [
     "user.get",
     Object {
-      "id": "77",
+      "filter": Object {
+        "id": "77",
+      },
     },
   ],
 ]

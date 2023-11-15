@@ -4,7 +4,9 @@ const mockCall = jest.fn(() => Promise.resolve()) as any
 const mockList = jest.fn(() => Promise.resolve()) as any
 const users = Users({ call: mockCall })
 
-const ID = '77'
+const ID = {
+  filter: { id: '77' },
+}
 
 describe('Users', () => {
   beforeEach(() => {

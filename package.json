@@ -22,7 +22,7 @@
     "url": "https://github.com/aksilia/bitrix.git"
   },
   "license": "MIT",
-  "author": "2BAD (https://github.com/2BAD)",
+  "author": "",
   "main": "build/main/bitrix.js",
   "module": "build/module/bitrix.js",
   "typings": "build/main/bitrix.d.ts",

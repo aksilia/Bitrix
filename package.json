@@ -1,6 +1,6 @@
 {
-  "name": "@aksilia/bitrix",
-  "version": "2.5.1",
+  "name": "@aksilia/bitrixapi",
+  "version": "2.5.2",
   "description": "Bitrix24 REST API client that doesn't suck",
   "keywords": [
     "api",
@@ -102,6 +102,8 @@
   },
   "publishConfig": {
     "@aksilia:registry": "https://npm.pkg.github.com"
+  },
+  "directories": {
+    "doc": "docs"
   }
 }
-

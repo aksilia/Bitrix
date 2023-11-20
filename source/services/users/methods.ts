@@ -1,5 +1,5 @@
 import { ListParams, Method } from '../../methods'
-import { GetPayload } from '../../payloads'
+import { GetPayload, ListPayload } from '../../payloads'
 import { User } from './entities'
 
 export type UsersMethods = {
@@ -11,7 +11,7 @@ export type UsersMethods = {
 
   readonly [Method.USER_GET]: {
     readonly type: User
-    readonly payload: GetPayload<readonly User[]>
+    readonly payload: ListPayload<User>
     readonly params: ListParams,
   }
 }

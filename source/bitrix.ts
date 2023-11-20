@@ -6,6 +6,7 @@ import DealsService from './services/deals'
 import LeadsService from './services/leads'
 import StatusesService from './services/statuses'
 import UsersService from './services/users'
+import ItemsService from './services/items'
 
 /**
  * Construct a Bitrix client with generic methods
@@ -27,7 +28,8 @@ export const Bitrix = (restURI: string, accessToken?: string, clientOptions?: Ex
     deals: DealsService({ call, list }),
     leads: LeadsService({ call, list }),
     statuses: StatusesService({ call }),
-    users: UsersService({ call })
+    users: UsersService({ call }),
+    items: ItemsService({ call, list }),
   }
 }
 
@@ -43,3 +45,4 @@ export * from './services/deals/entities'
 export * from './services/leads/entities'
 export * from './services/statuses/entities'
 export * from './services/users/entities'
+export * from './services/items/entities'

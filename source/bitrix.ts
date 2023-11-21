@@ -27,7 +27,7 @@ export const Bitrix = (restURI: string, accessToken?: string, clientOptions?: Ex
     deals: DealsService({ call, list }),
     leads: LeadsService({ call, list }),
     statuses: StatusesService({ call }),
-    users: UsersService({ call })
+    users: UsersService({ call, list })
   }
 }
 

@@ -51,7 +51,8 @@ const LISTABLE_METHODS = [
   Method.CRM_COMPANY_LIST,
   Method.CRM_CONTACT_LIST,
   Method.CRM_DEAL_LIST,
-  Method.CRM_LEAD_LIST
+  Method.CRM_LEAD_LIST,
+  Method.USER_GET
 ] as const
 
 export type ListableMethod = typeof LISTABLE_METHODS[number]
@@ -71,6 +72,7 @@ export type ListParams = {
   readonly order?: { readonly [key: string]: string } // 'ASC' | 'DESC'
   readonly filter?: { readonly [key: string]: string | number }
   readonly select?: readonly string[]
+  readonly admin_mode?: 'Y' | 'N'
 }
 
 /**

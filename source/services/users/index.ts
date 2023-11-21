@@ -1,12 +1,15 @@
 import { Call } from '../../client/methods/call'
-import { Method } from '../../methods'
+import { List } from '../../client/methods/list'
+import { Method, MethodParams } from '../../methods'
 
 type Dependencies = {
   readonly call: Call
+  readonly list: List
 }
 
-export default ({ call }: Dependencies) => ({
+export default ({ call, list }: Dependencies) => ({
   fields: () => call(Method.USER_FIELDS, {}),
 
-  get: (id?: string) => call(Method.USER_GET, { id })
+  get: (params: MethodParams<Method.USER_GET> = {}) =>
+    list(Method.USER_GET, params),
 })

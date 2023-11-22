@@ -3,6 +3,7 @@ import { BatchPayload } from './payloads'
 import { CompaniesMethods } from './services/companies/methods'
 import { ContactsMethods } from './services/contacts/methods'
 import { DealsMethods } from './services/deals/methods'
+import { ItemsMethods } from './services/items/methods'
 import { LeadsMethods } from './services/leads/methods'
 import { StatusesMethods } from './services/statuses/methods'
 import { UsersMethods } from './services/users/methods'
@@ -30,6 +31,12 @@ export enum Method {
   CRM_DEAL_GET = 'crm.deal.get',
   CRM_DEAL_LIST = 'crm.deal.list',
 
+  CRM_ITEM_FIELDS = 'crm.item.fields',
+  CRM_ITEM_ADD = 'crm.item.add',
+  CRM_ITEM_UPDATE = 'crm.item.update',
+  CRM_ITEM_GET = 'crm.item.get',
+  CRM_ITEM_LIST = 'crm.item.list',
+
   CRM_LEAD_FIELDS = 'crm.lead.fields',
   CRM_LEAD_ADD = 'crm.lead.add',
   CRM_LEAD_UPDATE = 'crm.lead.update',
@@ -51,6 +58,7 @@ const LISTABLE_METHODS = [
   Method.CRM_COMPANY_LIST,
   Method.CRM_CONTACT_LIST,
   Method.CRM_DEAL_LIST,
+  Method.CRM_ITEM_LIST,
   Method.CRM_LEAD_LIST,
   Method.USER_GET
 ] as const
@@ -73,6 +81,7 @@ export type ListParams = {
   readonly filter?: { readonly [key: string]: string | number }
   readonly select?: readonly string[]
   readonly admin_mode?: 'Y' | 'N'
+  readonly entityTypeId?: string
 }
 
 /**
@@ -82,7 +91,7 @@ export type ListParams = {
  * - `payload` — a payload that method returns
  * - `params` — params that method accepts
  */
-export type Methods = MethodsMap & CompaniesMethods & ContactsMethods & DealsMethods & LeadsMethods & StatusesMethods & UsersMethods & {
+export type Methods = MethodsMap & CompaniesMethods & ContactsMethods & DealsMethods & ItemsMethods & LeadsMethods & StatusesMethods & UsersMethods & {
 
   readonly [Method.BATCH]: {
     readonly type: unknown

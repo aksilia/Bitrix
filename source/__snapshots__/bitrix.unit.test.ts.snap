@@ -25,6 +25,13 @@ Object {
     "list": [Function],
     "update": [Function],
   },
+  "items": Object {
+    "create": [Function],
+    "fields": [Function],
+    "get": [Function],
+    "list": [Function],
+    "update": [Function],
+  },
   "leads": Object {
     "create": [Function],
     "fields": [Function],

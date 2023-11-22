@@ -38,6 +38,7 @@ export const highest = (
           : undefined
     , undefined)
 
+    
 /**
  * Converts batch payload to a list payload
  */
@@ -46,10 +47,25 @@ export const batchToListPayload = <P>(payload: BatchPayload<Record<string, P> | 
   const { result: { result, result_total, result_error, result_next }, time } = payload
 
   const flattenResult = Object.entries(result).reduce<readonly P[]>(
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    // @ts-expect-error ignore this for now
-    (flatten, [_key, r]) => !r ? flatten : [...flatten, ...r]
-    , [])
+    (flatten, [key, r]) => {
+      let itemsArray: readonly P[] = [];
+
+      if (key === "lead" || key === "item") {
+        // Use a type guard to ensure the correct structure
+        if (key === "lead" && Array.isArray(r)) {
+          itemsArray = r;
+        } else if (key === "item" && typeof r === "object" && r !== null && "items" in r) {
+          itemsArray = (r as { items: readonly P[] }).items;
+        }
+      } else {
+        // Assume a single item if not "lead" or "item"
+        itemsArray = [r as P];
+      }
+
+      return [...flatten, ...itemsArray];
+    },
+    []
+  );
 
   return {
     error: Object.values(result_error).join('\n'),

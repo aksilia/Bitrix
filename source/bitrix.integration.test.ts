@@ -32,4 +32,16 @@ describe('Bitrix API', () => {
       it.todo('should reject on error')
     })
   })
+
+  describe('`items`', () => {
+    describe('`get` method', () => {
+      it.todo('should get entry')
+      it.todo('should reject on error')
+    })
+
+    describe('`list` method', () => {
+      it.todo('should get all entries')
+      it.todo('should reject on error')
+    })
+  })
 })

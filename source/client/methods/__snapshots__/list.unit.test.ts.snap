@@ -6,18 +6,22 @@ Object {
 Expected error B",
   "next": 4,
   "result": Array [
-    Object {
-      "ID": "1",
-    },
-    Object {
-      "ID": "2",
-    },
-    Object {
-      "ID": "3",
-    },
-    Object {
-      "ID": "4",
-    },
+    Array [
+      Object {
+        "ID": "1",
+      },
+      Object {
+        "ID": "2",
+      },
+    ],
+    Array [
+      Object {
+        "ID": "3",
+      },
+      Object {
+        "ID": "4",
+      },
+    ],
   ],
   "time": Object {
     "date_finish": "2019-08-30T23:28:11+03:00",
@@ -37,18 +41,22 @@ Object {
 Expected error 2",
   "next": 4,
   "result": Array [
-    Object {
-      "ID": "1",
-    },
-    Object {
-      "ID": "2",
-    },
-    Object {
-      "ID": "3",
-    },
-    Object {
-      "ID": "4",
-    },
+    Array [
+      Object {
+        "ID": "1",
+      },
+      Object {
+        "ID": "2",
+      },
+    ],
+    Array [
+      Object {
+        "ID": "3",
+      },
+      Object {
+        "ID": "4",
+      },
+    ],
   ],
   "time": Object {
     "date_finish": "2019-08-30T23:28:11+03:00",
@@ -67,9 +75,13 @@ Object {
   "error": "",
   "next": undefined,
   "result": Array [
-    Object {
-      "ID": "1",
-    },
+    undefined,
+    Array [
+      Object {
+        "ID": "1",
+      },
+    ],
+    undefined,
   ],
   "time": Object {
     "date_finish": "2019-08-30T23:28:11+03:00",
@@ -276,18 +288,22 @@ Object {
 Expected error B",
   "next": 4,
   "result": Array [
-    Object {
-      "ID": "1",
-    },
-    Object {
-      "ID": "2",
-    },
-    Object {
-      "ID": "3",
-    },
-    Object {
-      "ID": "4",
-    },
+    Array [
+      Object {
+        "ID": "1",
+      },
+      Object {
+        "ID": "2",
+      },
+    ],
+    Array [
+      Object {
+        "ID": "3",
+      },
+      Object {
+        "ID": "4",
+      },
+    ],
   ],
   "time": Object {
     "start": 1567196890.959017,

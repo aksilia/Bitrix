@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Items should expose API methods 1`] = `
+Object {
+  "create": [Function],
+  "fields": [Function],
+  "get": [Function],
+  "list": [Function],
+  "update": [Function],
+}
+`;

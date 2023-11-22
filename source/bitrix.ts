@@ -3,6 +3,7 @@ import Client from './client'
 import CompaniesService from './services/companies'
 import ContactsService from './services/contacts'
 import DealsService from './services/deals'
+import ItemsService from './services/items'
 import LeadsService from './services/leads'
 import StatusesService from './services/statuses'
 import UsersService from './services/users'
@@ -25,6 +26,7 @@ export const Bitrix = (restURI: string, accessToken?: string, clientOptions?: Ex
     companies: CompaniesService({ call, list }),
     contacts: ContactsService({ call, list }),
     deals: DealsService({ call, list }),
+    items: ItemsService({ call, list }),
     leads: LeadsService({ call, list }),
     statuses: StatusesService({ call }),
     users: UsersService({ call, list })
@@ -40,6 +42,7 @@ export * from './services/companies/entities'
 export * from './services/contacts/entities'
 export * from './services/currencies/entities'
 export * from './services/deals/entities'
+export * from './services/items/entities'
 export * from './services/leads/entities'
 export * from './services/statuses/entities'
 export * from './services/users/entities'

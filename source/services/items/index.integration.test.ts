@@ -11,7 +11,10 @@ const { items } = Bitrix(WEBHOOK_URL)
 describe('Items', () => {
   describe('fields', () => {
     it('should get list', async () => {
-      const { result } = await items.list({entityTypeId: "167"})
+      const { result } = await items.get(
+        "8",
+        "167"
+      )
       expect(result).toMatchSnapshot()
     })
   })

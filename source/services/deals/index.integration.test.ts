@@ -11,7 +11,7 @@ const { deals } = Bitrix(WEBHOOK_URL)
 describe('Deals', () => {
   describe('fields', () => {
     it('should get all fields', async () => {
-      const { result } = await deals.list({ select: ["*"], filter: {">OPPORTUNITY":10000} })
+      const { result } = await deals.list({ select: ["*"], filter: {">OPPORTUNITY":10000, "<BEGINDATE":"2023-11-29T23:00:00.000Z"} })
       expect(result).toMatchSnapshot()
     })
   })

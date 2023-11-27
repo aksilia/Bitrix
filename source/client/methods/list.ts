@@ -38,7 +38,6 @@ export const highest = (
           : undefined
     , undefined)
 
-    
 /**
  * Converts batch payload to a list payload
  */
@@ -46,26 +45,20 @@ export const batchToListPayload = <P>(payload: BatchPayload<Record<string, P> | 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { result: { result, result_total, result_error, result_next }, time } = payload
 
-  const flattenResult = Object.entries(result).reduce<readonly P[]>(
-    (flatten, [key, r]) => {
-      let itemsArray: readonly P[] = [];
-
-      if (key === "lead" || key === "item") {
-        // Use a type guard to ensure the correct structure
-        if (key === "lead" && Array.isArray(r)) {
-          itemsArray = r;
-        } else if (key === "item" && typeof r === "object" && r !== null && "items" in r) {
-          itemsArray = (r as { items: readonly P[] }).items;
-        }
-      } else {
-        // Assume a single item if not "lead" or "item"
-        itemsArray = [r as P];
-      }
-
-      return [...flatten, ...itemsArray];
-    },
-    []
-  );
+  const flattenResult = Object.values(result).flatMap((entityResult) => {
+    if (Array.isArray(entityResult)) {
+      return entityResult;
+    } else if (
+      typeof entityResult === "object" &&
+      entityResult !== null &&
+      "items" in entityResult &&
+      Array.isArray((entityResult as any).items)  // Use 'any' to avoid TypeScript error
+    ) {
+      return (entityResult as any).items;
+    } else {
+      return [entityResult as P];
+    }
+  });
 
   return {
     error: Object.values(result_error).join('\n'),

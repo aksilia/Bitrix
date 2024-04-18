@@ -54,19 +54,29 @@ export const handlePayload = <P extends Payload<unknown>>(payload: P): P => {
   return payload;
 };
 
-export type Call = <M extends Method>(method: M, params: MethodParams<M>) => Promise<MethodPayload<M>>
+export type Call = <M extends Method>(
+  method: M,
+  params: MethodParams<M>,
+  methodType?: 'GET' | 'POST' // Optional method type argument
+) => Promise<MethodPayload<M>>
 
 type Dependencies = {
   readonly get: typeof got.get
+  readonly post?: typeof got.post
 }
 
 /**
  * Dispatches a request with specified method and params. Will fill figure out payload type based on the Method
  */
-export default ({ get }: Dependencies): Call => {
-  const call: Call = <M extends Method>(method: M, params: MethodParams<M>): Promise<MethodPayload<M>> =>
-    get<MethodPayload<M>>(method, { searchParams: toQuery(params) })
-      .then(({ body }) => handlePayload(body))
+export default ({ get, post }: Dependencies): Call => {
+  const call: Call = <M extends Method>(method: M, params: MethodParams<M>, methodType?: 'GET' | 'POST'): Promise<MethodPayload<M>> => {
+    const requestFunction = methodType === 'POST' ? (post || got.post) : get;  // Use default got.post if post is undefined
 
+    return requestFunction<MethodPayload<M>>(method, {
+      body: methodType === 'POST' ? JSON.stringify(params) : undefined,  // Only set body for POST requests
+      searchParams: methodType === 'GET' ? toQuery(params) : undefined, // Only set searchParams for GET requests
+    })
+      .then(({ body }) => handlePayload(body))
+  }
   return call
 }

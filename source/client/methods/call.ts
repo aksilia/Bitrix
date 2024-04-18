@@ -71,12 +71,15 @@ type Dependencies = {
 export default ({ get, post }: Dependencies): Call => {
   const call: Call = <M extends Method>(method: M, params: MethodParams<M>, methodType?: 'GET' | 'POST'): Promise<MethodPayload<M>> => {
     const requestFunction = methodType === 'POST' ? (post || got.post) : get;  // Use default got.post if post is undefined
-
-    return requestFunction<MethodPayload<M>>(method, {
-      body: methodType === 'POST' ? JSON.stringify(params) : undefined,  // Only set body for POST requests
-      searchParams: methodType === 'GET' ? toQuery(params) : undefined, // Only set searchParams for GET requests
-    })
-      .then(({ body }) => handlePayload(body))
+    if(methodType === 'POST'){
+      return requestFunction<MethodPayload<M>>(method, {
+        body: JSON.stringify(params),  // Only set body for POST requests
+      }).then(({ body }) => handlePayload(body))
+    }
+    else{
+      return requestFunction<MethodPayload<M>>(method, { searchParams: toQuery(params) })
+        .then(({ body }) => handlePayload(body))
+    }
   }
   return call
 }

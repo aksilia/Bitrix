@@ -54,19 +54,19 @@ export const handlePayload = <P extends Payload<unknown>>(payload: P): P => {
   return payload;
 };
 
-export type Call = <M extends Method>(method: M, params: MethodParams<M>) => Promise<MethodPayload<M>>
+export type Push = <M extends Method>(method: M, params: MethodParams<M>) => Promise<MethodPayload<M>>
 
 type Dependencies = {
-  readonly get: typeof got.get
+  readonly post: typeof got.post
 }
 
 /**
  * Dispatches a request with specified method and params. Will fill figure out payload type based on the Method
  */
-export default ({ get }: Dependencies): Call => {
-  const call: Call = <M extends Method>(method: M, params: MethodParams<M>): Promise<MethodPayload<M>> =>
-    get<MethodPayload<M>>(method, { searchParams: toQuery(params) })
+export default ({ post }: Dependencies): Push => {
+  const push: Push = <M extends Method>(method: M, params: MethodParams<M>): Promise<MethodPayload<M>> =>
+    post<MethodPayload<M>>(method, { body: toQuery(params) })
       .then(({ body }) => handlePayload(body))
 
-  return call
+  return push
 }

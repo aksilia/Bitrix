@@ -1,6 +1,6 @@
 {
   "name": "@aksilia/bitrixapi",
-  "version": "3.0.8",
+  "version": "3.0.13",
   "description": "Bitrix24 REST API client that doesn't suck - anymore",
   "keywords": [
     "api",

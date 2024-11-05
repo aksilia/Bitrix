@@ -20,7 +20,10 @@ export default (restURI: string, accessToken?: string, options?: ExtendOptions) 
   const client = got.extend({
     prefixUrl: restURI,
     headers: {
-      'user-agent': '@2bad/bitrix'
+      'user-agent': '@2bad/bitrix',
+      'Content-Type': 'application/json',
+      'Accept': '*/*',
+      'Connection': 'keep-alive'
     },
     responseType: 'json',
     hooks: {
@@ -39,9 +42,12 @@ export default (restURI: string, accessToken?: string, options?: ExtendOptions) 
   const queuedGet = (...args: Parameters<typeof client.get>) =>
     queue.add(() => client.get(...args))
 
+  const queuedPost = (...args: Parameters<typeof client.post>) =>
+    queue.add(() => client.post(...args))
+
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error @todo remove after issue is resolved (https://github.com/sindresorhus/got/issues/954)
-  const call = Call({ get: queuedGet })
+  const call = Call({ get: queuedGet, post:queuedPost })
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error @todo remove after issue is resolved (https://github.com/sindresorhus/got/issues/954)
   const batch = Batch({ get: queuedGet })
